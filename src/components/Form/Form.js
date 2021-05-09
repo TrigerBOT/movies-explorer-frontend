@@ -1,14 +1,14 @@
 import React from "react";
 function Form(props) {
-console.log(props);
   const formInputs = props.inputs.map((input) => {
-      return(
-    <div className="form__fieldset">
-      <label className="form__label" for={input.for}>
-        {input.label}
-      </label>
-      <input className="form__input" type="text" name={input.name}></input>
-    </div>)
+    return (
+      <div className="form__fieldset">
+        <label className="form__label" for={input.for}>
+          {input.label}
+        </label>
+        <input className="form__input" type="text" name={input.name}></input>
+      </div>
+    );
   });
 
   return (

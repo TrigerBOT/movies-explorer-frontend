@@ -2,7 +2,6 @@ import React from "react";
 import "./MoviesCard.css";
 import { useLocation } from "react-router";
 function MoviesCard() {
-
   const saved = true;
   const { pathname } = useLocation();
   return (
@@ -17,13 +16,15 @@ function MoviesCard() {
         </div>
 
         <button
-        className={
-          `card__btn 
+          className={`card__btn 
           ${saved && pathname === "/movies" && "card__btn_type_liked"}
-          ${saved && (pathname === "/movies" ? "card__btn_type_check" : "card__btn_type_cross")}`
-        }
-      ></button>
-
+          ${
+            saved &&
+            (pathname === "/movies"
+              ? "card__btn_type_check"
+              : "card__btn_type_cross")
+          }`}
+        ></button>
       </div>
     </div>
   );

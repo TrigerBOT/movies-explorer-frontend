@@ -32,44 +32,35 @@ function App() {
           <Register />
         </Route>
         <Route path="/">
-          
           <Route exact path="/">
-          <div
-            className={`page__container`}
-          >
-            <Header loggedIn={loggedIn} />
-          </div>
+            <div className={`page__container`}>
+              <Header loggedIn={loggedIn} />
+            </div>
             <Main />
           </Route>
           <Route path="/movies">
-          <div
-            className={`page__container_white`}
-          >
-            <Header loggedIn={loggedIn} />
-          </div>
-            <Movies  />
+            <div className={`page__container_white`}>
+              <Header loggedIn={loggedIn} />
+            </div>
+            <Movies />
           </Route>
           <Route path="/saved-movies">
-          <div
-            className={`page__container_white`}
-          >
-            <Header loggedIn={loggedIn} />
-          </div>
+            <div className={`page__container_white`}>
+              <Header loggedIn={loggedIn} />
+            </div>
             <Movies />
           </Route>
           <Route path="/profile">
-          <div
-            className={`page__container_white`}
-          >
-            <Header loggedIn={loggedIn} />
-          </div>
+            <div className={`page__container_white`}>
+              <Header loggedIn={loggedIn} />
+            </div>
             <Profile onSignOut={onSignOut} />
           </Route>
           <Switch>
             <Route path="/profile" />
             <Route path="/">
               <div className={`page__container_grey`}>
-              <Footer />
+                <Footer />
               </div>
             </Route>
           </Switch>
