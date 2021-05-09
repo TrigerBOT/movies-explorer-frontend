@@ -1,0 +1,122 @@
+.navigation {
+  z-index: 1;
+  height: 100%;
+  margin-left: 44px;
+}
+.navigation__list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.navigation__item {
+  margin-right: 20px;
+  display: flex;
+}
+.navigation__item_main{
+    display: none;
+}
+
+.navigation__item:last-of-type {
+  margin-right: 0;
+}
+.navigation__link {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 18px;
+  transition: opacity 0.2s ease-in-out;
+  text-decoration: none;
+  color: #000;
+}
+.navigation__link_active {
+  font-weight: 500;
+}
+.navigation__item_profile {
+    position: absolute;
+    right: calc((100vw - 768px) / (1280 - 768) * (70 - 30) + 30px);
+  }
+.navigation__link_profile {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  width: 128px;
+  height: 60px;
+ 
+ 
+  align-self: center;
+  background-image: url(../../images/profile.svg);
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    visibility: hidden;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100vh;
+    transition: all ease-in-out 0.5s;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .navigation__item_main{
+    display: block;
+}
+  .navigation_opened {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .navigation__list {
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 300px;
+    max-width: 100%;
+    padding-top: 159px;
+    transition: width ease-in-out 0.5s;
+    background: #fff;
+  }
+
+  .navigation__list_opened {
+    width: 520px;
+  }
+
+  .navigation__item {
+    margin: 0 0 28px;
+  }
+
+  .navigation__link {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    position: relative;
+  }
+
+
+
+  .navigation__item_profile {
+
+    right: auto;
+    bottom:8.9%;
+  }
+
+  .navigation__link_profile {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navigation__list {
+    padding-top: 145px;
+  }
+
+  .navigation__item {
+    margin-bottom: 24px;
+  }
+}

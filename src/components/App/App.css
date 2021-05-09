@@ -1,0 +1,25 @@
+.page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 320px;
+  height: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+.page__container{
+  background-color: #5C5C5C;
+  width: 100%;
+  
+}
+.page__container_grey{
+  background-color: #FAFAFA;
+  width: 100%;
+}
+.page__container_white{
+  background-color: #FFF;
+  width: 100%;
+}

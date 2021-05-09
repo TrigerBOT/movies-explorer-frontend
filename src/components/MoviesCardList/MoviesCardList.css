@@ -1,0 +1,36 @@
+.cards {
+    width: 100%;
+    margin: 0 auto;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 24px;
+    justify-items: center;
+    padding: 70px 0 0 0;
+    
+  }
+  
+  .cards__not-found {
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 30px;
+    margin: auto;
+    color: #000;
+  }
+  
+  @media screen and (max-width: 1280px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 30px;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .cards {
+      padding-top: 40px;
+      grid-template-columns: 1fr;
+      row-gap: 14px;
+    }
+  }

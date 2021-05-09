@@ -1,0 +1,151 @@
+.about-me {
+  display: grid;
+  grid-template: repeat(5, auto) / auto minmax(255px, 270px);
+  grid-column-gap: 270px;
+  color: #000;
+  padding-bottom: 0 !important;
+}
+
+.about-me__title {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-bottom: 66px;
+}
+
+.about-me__name {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 50px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 58px;
+  margin: 0 0 18px;
+  letter-spacing: -0.04em;
+}
+
+.about-me__profession {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 22px;
+  margin: 0 0 26px;
+  mix-blend-mode: normal;
+}
+
+.about-me__description {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 22px;
+  margin: 0 0 40px;
+  mix-blend-mode: normal;
+}
+
+.about-me__link {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 17px;
+  transition: opacity ease-in-out 0.2s;
+  text-decoration: none;
+}
+
+.about-me__link:hover {
+  opacity: 0.6;
+}
+.about-me__links {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 20px;
+}
+.about-me__avatar {
+  align-self: self-start;
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  border-radius: 10px;
+  justify-self: center;
+  object-fit: cover;
+  object-position: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 6;
+}
+
+@media screen and (max-width: 1280px) {
+  .about-me {
+    grid-column-gap: calc((100vw - 768px) / (1280 - 768) * (270 - 50) + 50px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 13px;
+  }
+
+  .about-me__profession {
+    font-family: "Inter", "Arial", "Helvetica", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+
+  .about-me__description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__avatar {
+    max-width: 255px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .about-me {
+    grid-template: repeat(6, auto) / 1fr;
+    grid-column-gap: 0;
+  }
+
+  .about-me__title {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .about-me__avatar {
+    max-width: none;
+    margin-bottom: 40px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .about-me__name {
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 20px;
+  }
+  .about-me__title {
+    margin-bottom: 60px;
+  }
+  .about-me__profession {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 20px;
+  }
+
+  .about-me__description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
