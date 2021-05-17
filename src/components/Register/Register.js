@@ -30,6 +30,11 @@ function Register() {
       button={button}
       link={link}
       footer={footer}
+      Link={
+        <Link to="/signin" className="form__link">
+        Войти
+     </Link>
+      }
     ></Form>
   );
 }

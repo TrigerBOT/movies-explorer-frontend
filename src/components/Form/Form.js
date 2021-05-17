@@ -22,7 +22,7 @@ function Form(props) {
       <div className="form__button-container">
         <button className="form__button">{props.button}</button>
         <div className="form__footer">
-          {props.footer} <a className="form__link">{props.link}</a>
+          {props.footer} {props.Link}
         </div>
       </div>
     </form>

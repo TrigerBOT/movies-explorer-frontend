@@ -25,6 +25,11 @@ function Login() {
       button={button}
       link={link}
       footer={footer}
+      Link={
+        <Link to="/signup" className="form__link">
+           Регистрация
+        </Link>
+      }
     ></Form>
   );
 }
