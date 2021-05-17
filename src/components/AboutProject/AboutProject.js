@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutProject() {
   return (
-    <section className="main__section">
+    <section id="about-project" className="main__section">
       <h2 className="main__section-title">О проекте</h2>
       <ul className="table">
         <li className="table__cell">

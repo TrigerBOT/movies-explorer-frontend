@@ -28,13 +28,13 @@
   border: none;
 }
 .profile__button {
-    font-family: "Inter", "Arial", "Helvetica", sans-serif;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: 0px;
-    text-align: center;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: center;
   margin-bottom: 16px;
   background: #fff;
   border: none;
@@ -70,17 +70,27 @@
   text-align: right;
   border: none;
 }
-@media screen and (width:768px) {
-    .profile__title{
-        margin-bottom: 96px;
-    }
-    .profile {
-    padding:236px 0 269px;}
+.profile_error {
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #ff004c;
 }
-@media screen and (width:400px) {
-  .profile__title{
-      margin-bottom: 80px;
+@media screen and (width: 768px) {
+  .profile__title {
+    margin-bottom: 96px;
   }
   .profile {
-  padding:70px 0 40px;}
+    padding: 236px 0 269px;
+  }
+}
+@media screen and (width: 400px) {
+  .profile__title {
+    margin-bottom: 80px;
+  }
+  .profile {
+    padding: 70px 0 40px;
+  }
 }
