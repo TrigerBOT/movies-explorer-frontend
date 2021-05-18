@@ -21,16 +21,13 @@ function MoviesCardList(props) {
               .map((movie, id) => (
                 <MoviesCard
                   movie={movie}
-                  name={movie.nameRU}
+                  nameRU={movie.nameRU}
                   duration={movie.duration}
+                  onSaveMovie={props.onSaveMovie}
+                  onDeleteMovie={props.onDeleteMovie}
                   key={id}
                   id={movie._id}
                   {...movie}
-                  isSavedMovies={props.isSavedMovies}
-                  onAddMovie={props.onAddMovie}
-                  onDelete={props.onDelete}
-                  savedMovies={props.savedMovies}
-                  likedMovies={props.likedMovies}
                 />
               ))
           )}

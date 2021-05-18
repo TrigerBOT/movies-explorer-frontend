@@ -10,7 +10,7 @@ class MainApi {
       }
       return Promise.resolve(res.json())
         .then((data) => {
-          return { data, status: res.status }
+          return  data;
         })
     };
   
@@ -87,7 +87,7 @@ class MainApi {
   };
   
   const OPTIONS = {
-    baseUrl: 'http://moviefinder.nomoredomains.club',
+    baseUrl: 'https://api.moviefinder.nomoredomains.club',
     headers: {
       'Content-Type': 'application/json',
     },

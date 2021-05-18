@@ -1,17 +1,38 @@
-import React from "react";
+import React , {useState} from "react";
 import { Link } from "react-router-dom";
 import Form from "../Form/Form";
-function Login() {
+function Login({onSignin,message}) {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+  function handleSubmit(evt){
+    evt.preventDefault();
+    onSignin(data);
+  }
+  const [isValid,setIsValid] = useState(false);
+  function handleChange(evt)  {
+   
+    const target = evt.target;
+    const name = target.name;
+    const value = target.value;
+    setData({ ...data, [name]: value });
+    setIsValid(target.closest("form").checkValidity());
+ 
+  };
+
   const inputs = [
     {
-      for: "Email",
-      name: "Email",
-      label: "Email",
+      for: "email",
+      name: "email",
+      label: "email",
+      change:handleChange
     },
     {
       for: "password",
-      name: "Password",
+      name: "password",
       label: "Пароль",
+      change:handleChange
     },
   ];
   const title = "Рады Видеть!";
@@ -21,10 +42,13 @@ function Login() {
   return (
     <Form
       inputs={inputs}
+      isValid={isValid}
+      message={message}
       title={title}
       button={button}
       link={link}
       footer={footer}
+      onSubmit={handleSubmit}
       Link={
         <Link to="/signup" className="form__link">
            Регистрация

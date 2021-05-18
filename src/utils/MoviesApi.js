@@ -10,7 +10,7 @@ class MoviesApi {
       }
       return Promise.resolve(res.json())
         .then((data) => {
-          return { data, status: res.status }
+          return  data
          })
     };
   

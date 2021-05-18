@@ -12,8 +12,6 @@ function Profile({
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [changedName, setChangedName] = useState(false);
-  const [changedEmail, setChangedEmail] = useState(false);
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [formValid, setFormValid] = useState(false);
@@ -26,7 +24,7 @@ function Profile({
   }, [currentUser]);
 
   function handleEmailChange(e) {
-    setChangedEmail(true);
+
     const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(
       e.target.value
     );
@@ -46,7 +44,7 @@ function Profile({
     }
   }, [name, email, currentUser.name, currentUser.email]);
   function handleNameChange(e) {
-    setChangedName(true);
+
     const validName = /^[a-zA-Z- ]+$/.test(e.target.value);
 
     if (e.target.value.length < 2) {
@@ -95,7 +93,6 @@ function Profile({
           <span className="profile_error">{emailError}</span>
         </div>
       </div>
-
       <button className="profile__button" type="button" type="submit" >
         Редактировать
       </button>
