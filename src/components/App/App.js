@@ -13,7 +13,7 @@ import Register from "../Register/Register";
 import Profile from "../Profile/Profile";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -214,7 +214,7 @@ function App() {
       setIsLoading(true);
       mainApi.saveMovie(data,localStorage.getItem("jwt"))
         .then((res) => {
-          setUsersMoviesCards(prev => ([...prev, res]));
+          setUserMovies(prev => ([...prev, res]));
         })
         .catch((err) => {
           console.log(err)
@@ -225,7 +225,7 @@ function App() {
         });
     };
     const handleDeleteMovieCard = (movieId) => {
-      const id = usersMoviesCards.find(item => item.movieId === movieId)._id;
+      const id = userMovies.find(item => item.movieId === movieId)._id;
       setIsLoading(true);
       mainApi.deleteSavedMovie(id)
         .then(() => {
@@ -280,6 +280,7 @@ const handleFilterAllMovies = (filters) => {
           >
             <Movies movies={movies}
              onChangeFilters={onChangeFilters}
+             usersMoviesCards={userMovies}
               isShortMovie={shortMovies}
               message={message}
               savedMovies={userMovies}
@@ -293,6 +294,7 @@ const handleFilterAllMovies = (filters) => {
             <Movies
               movies={userMovies}
               onChangeFilters={onChangeFilters}
+              usersMoviesCards={userMovies}
               isShortMovie={shortMovies}
               onSaveMovie={handleSaveMovieCard}
               onDeleteMovie={handleDeleteMovieCard}

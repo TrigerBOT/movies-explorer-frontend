@@ -21,6 +21,7 @@ function MoviesCardList(props) {
               .map((movie, id) => (
                 <MoviesCard
                   movie={movie}
+                  saved={props.usersMoviesCards.some(usersItem => usersItem.movieId === movie.movieId)}
                   nameRU={movie.nameRU}
                   duration={movie.duration}
                   onSaveMovie={props.onSaveMovie}

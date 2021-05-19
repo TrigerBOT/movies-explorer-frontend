@@ -16,12 +16,11 @@ function Movies(props) {
         <MoviesCardList
           movies={props.movies}
           onGetMovies={props.handleGetMovies}
+          usersMoviesCards={props.usersMoviesCards}
           onAddMovie={props.onAddMovie}
-          isSavedMovies={false}
           message={props.message}
           onSaveMovie={props.onSaveMovie}
           onDeleteMovie={props.onDeleteMovie}
-          savedMovies={props.savedMovies}
           likedMovies={props.likedMovies}
         ></MoviesCardList>
         

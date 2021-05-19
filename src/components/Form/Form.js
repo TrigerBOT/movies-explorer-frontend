@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 function Form(props) {
 
   const errorClassName =`${
@@ -18,7 +19,7 @@ function Form(props) {
   
   return (
     <form action="#" id="form_reset" className="form" onSubmit={props.onSubmit} >
-      <div className="form__img"></div>
+      <Link to="/" className="form__img"></Link>
       <h2 className="form__title">{props.title}</h2>
       <div className="form__container">
         {formInputs}
