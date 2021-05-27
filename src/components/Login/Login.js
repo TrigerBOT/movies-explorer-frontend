@@ -39,6 +39,7 @@ function Login({ onSignin, message }) {
       title={title}
       button={button}
       link={link}
+      message={message}
       footer={footer}
       formWithValidation={formWithValidation}
       onSubmit={handleSubmit}

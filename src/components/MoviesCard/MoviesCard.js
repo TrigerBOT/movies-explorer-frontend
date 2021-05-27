@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './MoviesCard.css';
 
-import { useLocation } from 'react-router';
-
 function MoviesCard({
   movie, saved, onSaveMovie, onDeleteMovie,
 }) {

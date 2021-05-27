@@ -80,29 +80,6 @@ function App() {
         localStorage.removeItem('currentUser');
       });
   }
-
-  function handleRegister(name, email, password) {
-    setIsLoading(true);
-    mainApi
-      .register({ name, email, password })
-      .then((res) => {
-        if (res) {
-          setMessage('');
-          handleLogin(email, password);
-          setLoggedIn(true);
-          setCurrentUser(res);
-          history.push('/signin');
-        }
-      })
-      .catch((err) => {
-        if (err === 409) {
-          setMessage('Пользователь с таким email уже существует');
-        } else {
-          setMessage('При регистрации пользователя произошла ошибка');
-        }
-      }).finally(() => { setIsLoading(false); });
-  }
-
   function handleLogin({ email, password }) {
     setIsLoading(true);
     mainApi
@@ -132,6 +109,28 @@ function App() {
         localStorage.removeItem('jwt');
       })
       .finally(() => { setIsLoading(false); });
+  }
+
+  function handleRegister(name, email, password) {
+    setIsLoading(true);
+    mainApi
+      .register({ name, email, password })
+      .then((res) => {
+        if (res) {
+          setMessage('');
+          handleLogin(email, password);
+          setLoggedIn(true);
+          setCurrentUser(res);
+          history.push('/signin');
+        }
+      })
+      .catch((err) => {
+        if (err === 409) {
+          setMessage('Пользователь с таким email уже существует');
+        } else {
+          setMessage('При регистрации пользователя произошла ошибка');
+        }
+      }).finally(() => { setIsLoading(false); });
   }
 
   const handleSignOut = () => {
