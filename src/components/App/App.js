@@ -22,11 +22,11 @@ function App() {
   const [shortMovies, setShortMovies] = useState(false);
   const [message, setMessage] = useState("");
   const history = useHistory();
-  let location =  useLocation();
+  let location = useLocation();
   useEffect(() => {
- 
+
     getAllMovies();
-     
+
   }, [currentUser]);
   useEffect(() => {
     if (loggedIn) {
@@ -100,7 +100,7 @@ function App() {
         } else {
           setMessage("При регистрации пользователя произошла ошибка");
         }
-      }).finally(()=>{setIsLoading(false)});;
+      }).finally(() => { setIsLoading(false) });;
   }
 
   function handleLogin({ email, password }) {
@@ -131,7 +131,7 @@ function App() {
         }
         localStorage.removeItem("jwt");
       })
-      .finally(()=>{setIsLoading(false)});
+      .finally(() => { setIsLoading(false) });
   }
 
   const handleSignOut = () => {
@@ -150,7 +150,7 @@ function App() {
   function handleUpdateUser(data) {
     setIsLoading(true);
     mainApi
-      .updateCurrentUserProfile(data,localStorage.getItem("jwt"))
+      .updateCurrentUserProfile(data, localStorage.getItem("jwt"))
       .then((editedData) => {
         setCurrentUser(editedData);
         setMessage("Данные профиля успешно обновлены");
@@ -163,7 +163,7 @@ function App() {
           setMessage("При изменении данных профиля произошла ошибка");
         }
       })
-      .finally(()=>{setIsLoading(false)});
+      .finally(() => { setIsLoading(false) });
   }
   // movies
   const getAllMovies = () => {
@@ -193,7 +193,7 @@ function App() {
           movieId: id,
           nameRU,
           nameEN,
-          thumbnail: image 
+          thumbnail: image
         }));
         localStorage.setItem("allMovies", JSON.stringify(allMovies));
         setMovies(allMovies);
@@ -204,68 +204,68 @@ function App() {
       });
   };
 
-    const onChangeFilters = ({ key, value }) => {
-      setFilters(prev => {
-        handleFilterAllMovies({ ...prev, [key]: value });
-        return { ...prev, [key]: value };
-      });
-    };
-    const handleSaveMovieCard = (data) => {
-      setIsLoading(true);
-      mainApi.saveMovie(data,localStorage.getItem("jwt"))
-        .then((res) => {
-          setUserMovies(prev => ([...prev, res]));
-        })
-        .catch((err) => {
-          console.log(err)
-        },
-        )
-        .finally(() => {
-          setIsLoading(false);
-        });
-    };
-    const handleDeleteMovieCard = (movieId) => {
-      const id = userMovies.find(item => item.movieId === movieId)._id;
-      setIsLoading(true);
-      mainApi.deleteSavedMovie(id)
-        .then(() => {
-          setUserMovies(prev => prev.filter(item => item._id !== id));
-        })
-        .catch((err) => {
-            console.log(err)
-          },
-        )
-        .finally(() => {
-          setIsLoading(false);
-        });
-    };
-
-//filter
-const getFilteredMovies = (movies, { text = "", short = false }) => {
-  return movies.filter(item => {
-    if (short && item.duration > 40) {
-      return false;
-    }
-    for (let key in item) {
-      if (item.hasOwnProperty(key) && typeof item[key] === "string" &&
-        item[key].toLowerCase().includes(text.toLowerCase())) {
-        return true;
-      }
-    }
-    return false;
-  });
-};
-
-const handleFilterAllMovies = (filters) => {
-  if (localStorage.getItem("allMovies")) {
+  const onChangeFilters = ({ key, value }) => {
+    setFilters(prev => {
+      handleFilterAllMovies({ ...prev, [key]: value });
+      return { ...prev, [key]: value };
+    });
+  };
+  const handleSaveMovieCard = (data) => {
     setIsLoading(true);
-    const filteredMovies = getFilteredMovies(JSON.parse(localStorage.getItem("allMovies")), filters) || [];
-    setMovies(filteredMovies);
-    setIsLoading(false);
-  } else {
-    getAllMovies("");
-  }
-};
+    mainApi.saveMovie(data, localStorage.getItem("jwt"))
+      .then((res) => {
+        setUserMovies(prev => ([...prev, res]));
+      })
+      .catch((err) => {
+        console.log(err)
+      },
+      )
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+  const handleDeleteMovieCard = (movieId) => {
+    const id = userMovies.find(item => item.movieId === movieId)._id;
+    setIsLoading(true);
+    mainApi.deleteSavedMovie(id)
+      .then(() => {
+        setUserMovies(prev => prev.filter(item => item._id !== id));
+      })
+      .catch((err) => {
+        console.log(err)
+      },
+      )
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  //filter
+  const getFilteredMovies = (movies, { text = "", short = false }) => {
+    return movies.filter(item => {
+      if (short && item.duration > 40) {
+        return false;
+      }
+      for (let key in item) {
+        if (item.hasOwnProperty(key) && typeof item[key] === "string" &&
+          item[key].toLowerCase().includes(text.toLowerCase())) {
+          return true;
+        }
+      }
+      return false;
+    });
+  };
+
+  const handleFilterAllMovies = (filters) => {
+    if (localStorage.getItem("allMovies")) {
+      setIsLoading(true);
+      const filteredMovies = getFilteredMovies(JSON.parse(localStorage.getItem("allMovies")), filters) || [];
+      setMovies(filteredMovies);
+      setIsLoading(false);
+    } else {
+      getAllMovies("");
+    }
+  };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -279,13 +279,13 @@ const handleFilterAllMovies = (filters) => {
             loggedIn={loggedIn}
           >
             <Movies movies={movies}
-             onChangeFilters={onChangeFilters}
-             usersMoviesCards={userMovies}
+              onChangeFilters={onChangeFilters}
+              usersMoviesCards={userMovies}
               isShortMovie={shortMovies}
               message={message}
               savedMovies={userMovies}
               onDeleteMovie={handleDeleteMovieCard}
-             />
+            />
           </ProtectedRoute>
           <ProtectedRoute
             path="/saved-movies"
@@ -321,7 +321,7 @@ const handleFilterAllMovies = (filters) => {
             <NotFound />
           </Route>
         </Switch>
-        {isLoading && <Preloader/>}
+        {isLoading && <Preloader />}
       </div>
     </CurrentUserContext.Provider>
   );

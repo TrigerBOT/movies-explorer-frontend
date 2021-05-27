@@ -2,9 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 function Form(props) {
 
-  const errorClassName =`${
-    props.isValid ? "form__error" : "form__error form__error_visible"
-  }`;
+  const errorClassName = `${props.isValid ? "form__error" : "form__error form__error_visible"
+    }`;
 
   const formInputs = props.inputs.map((input) => {
     return (
@@ -16,7 +15,7 @@ function Form(props) {
       </div>
     );
   });
-  
+
   return (
     <form action="#" id="form_reset" className="form" onSubmit={props.onSubmit} >
       <Link to="/" className="form__img"></Link>

@@ -7,7 +7,7 @@ function Profile({
   onSignOut,
   onUpdateCurrentUser,
   loggedIn
-  
+
 }) {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");
@@ -59,53 +59,53 @@ function Profile({
     setName(e.target.value);
   }
   function handleSubmit(e) {
-    if(formValid){
-     
-    e.preventDefault();
-    onUpdateCurrentUser({
-      name,
-      email,
-    });
+    if (formValid) {
+
+      e.preventDefault();
+      onUpdateCurrentUser({
+        name,
+        email,
+      });
     }
     else return
   }
   return (
     <>
-    <div className={`page__container_white`}>
-    <Header loggedIn={loggedIn} />
-  </div>
-    <form className="profile" name="profile" onSubmit={handleSubmit}>
-      <h2 className="profile__title">Привет, {currentUser.name}!</h2>
-      <div className="profile__container">
-        <div className="profile__field">
-          <label className="profile__label" for="name">
-            Имя
-          </label>
-          <input type="text" name="name" value={name} onChange={handleNameChange} className="profile__input"></input>
-          <span className="profile_error">{nameError}</span>
-        </div>
-        <div className="profile__line"></div>
-        <div className="profile__field">
-          <label className="profile__label" for="Email">
-            Email
-          </label>
-          <input type="text" name="Email" value={email} onChange={handleEmailChange} className="profile__input"></input>
-          <span className="profile_error">{emailError}</span>
-        </div>
+      <div className={`page__container_white`}>
+        <Header loggedIn={loggedIn} />
       </div>
-      <button className="profile__button" type="button" type="submit" >
-        Редактировать
+      <form className="profile" name="profile" onSubmit={handleSubmit}>
+        <h2 className="profile__title">Привет, {currentUser.name}!</h2>
+        <div className="profile__container">
+          <div className="profile__field">
+            <label className="profile__label" for="name">
+              Имя
+          </label>
+            <input type="text" name="name" value={name} onChange={handleNameChange} className="profile__input"></input>
+            <span className="profile_error">{nameError}</span>
+          </div>
+          <div className="profile__line"></div>
+          <div className="profile__field">
+            <label className="profile__label" for="Email">
+              Email
+          </label>
+            <input type="text" name="Email" value={email} onChange={handleEmailChange} className="profile__input"></input>
+            <span className="profile_error">{emailError}</span>
+          </div>
+        </div>
+        <button className="profile__button" type="button" type="submit" >
+          Редактировать
       </button>
-      
-      <Link
-              to="/sign-in"
-              className="profile__button profile__button_exit"
-              disabled={!formValid || name < 2 || email < 2}
-              onClick={onSignOut}
-            >
-              Выйти из аккаунта
+
+        <Link
+          to="/sign-in"
+          className="profile__button profile__button_exit"
+          disabled={!formValid || name < 2 || email < 2}
+          onClick={onSignOut}
+        >
+          Выйти из аккаунта
             </Link>
-    </form>
+      </form>
     </>
   );
 }

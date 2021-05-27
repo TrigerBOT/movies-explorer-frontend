@@ -9,12 +9,12 @@ function MoviesCardList(props) {
   }
 
   return (
-  
-  <>
-  <section className="cards">
-  <Suspense fallback={<Preloader />}>
+
+    <>
+      <section className="cards">
+        <Suspense fallback={<Preloader />}>
           {props.movies.length === 0 ? (
-              <p className="cards__not-found">Ничего не найдено</p>
+            <p className="cards__not-found">Ничего не найдено</p>
           ) : (
             props.movies
               .slice(0, counter)
@@ -35,9 +35,9 @@ function MoviesCardList(props) {
         </Suspense>
       </section>
       {props.movies.length >= 4 &&
-      props.movies.length > counter &&
-      props.movies.length <= 100 &&
-      !props.message ? (
+        props.movies.length > counter &&
+        props.movies.length <= 100 &&
+        !props.message ? (
         <section className="more">
           <button
             type="button"
@@ -51,11 +51,11 @@ function MoviesCardList(props) {
         ""
       )}
 
-  
-  </>
+
+    </>
   );
-    
-  
+
+
 }
 
 export default MoviesCardList;

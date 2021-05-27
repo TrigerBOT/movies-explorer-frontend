@@ -1,24 +1,24 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Form from "../Form/Form";
-function Login({onSignin,message}) {
+function Login({ onSignin, message }) {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-  function handleSubmit(evt){
+  function handleSubmit(evt) {
     evt.preventDefault();
     onSignin(data);
   }
-  const [isValid,setIsValid] = useState(false);
-  function handleChange(evt)  {
-   
+  const [isValid, setIsValid] = useState(false);
+  function handleChange(evt) {
+
     const target = evt.target;
     const name = target.name;
     const value = target.value;
     setData({ ...data, [name]: value });
     setIsValid(target.closest("form").checkValidity());
- 
+
   };
 
   const inputs = [
@@ -26,13 +26,13 @@ function Login({onSignin,message}) {
       for: "email",
       name: "email",
       label: "email",
-      change:handleChange
+      change: handleChange
     },
     {
       for: "password",
       name: "password",
       label: "Пароль",
-      change:handleChange
+      change: handleChange
     },
   ];
   const title = "Рады Видеть!";
@@ -51,7 +51,7 @@ function Login({onSignin,message}) {
       onSubmit={handleSubmit}
       Link={
         <Link to="/signup" className="form__link">
-           Регистрация
+          Регистрация
         </Link>
       }
     ></Form>
