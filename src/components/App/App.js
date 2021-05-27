@@ -243,7 +243,7 @@ function App() {
     }
     for (const key in item) {
       if (item.hasOwnProperty(key) && typeof item[key] === 'string'
-          && item[key].toLowerCase().includes(text.toLowerCase())) {
+        && item[key].toLowerCase().includes(text.toLowerCase())) {
         return true;
       }
     }
@@ -315,7 +315,7 @@ function App() {
             <Register onSignup={handleRegister} message={message} />
           </Route>
           <Route path="/signin">
-            <Login onSignin={handleLogin} loggedIn={loggedIn} />
+            <Login onSignin={handleLogin}  message={message} loggedIn={loggedIn} />
           </Route>
           <Route path="*">
             <NotFound />
