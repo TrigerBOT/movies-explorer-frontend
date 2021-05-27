@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function Footer() {
   return (
@@ -7,13 +7,17 @@ function Footer() {
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
       <div className="footer__row">
-        <p className="footer__date">© {new Date().getFullYear()}</p>
+        <p className="footer__date">
+          ©
+          {new Date().getFullYear()}
+        </p>
         <ul className="footer__links">
           <li>
             <a
               href="https://praktikum.yandex.ru/"
               className="footer__link"
               target="_blank"
+              rel="noreferrer"
             >
               Яндекс.Практикум
             </a>
@@ -23,6 +27,7 @@ function Footer() {
               href="https://github.com/TrigerBOT/movies-explorer-frontend"
               className="footer__link"
               target="_blank"
+              rel="noreferrer"
             >
               Github
             </a>

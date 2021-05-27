@@ -1,7 +1,7 @@
-import "./Header.css";
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import Navigation from "../Navigation/Navigation";
+import './Header.css';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import Navigation from '../Navigation/Navigation';
 
 function Header({ loggedIn }) {
   const [openNavigation, setOpenNavigation] = useState(false);
@@ -11,7 +11,7 @@ function Header({ loggedIn }) {
   return (
     <header className="header">
       <NavLink to="/">
-        <div className="header__logo"></div>
+        <div className="header__logo" />
       </NavLink>
       {loggedIn ? (
         <>
@@ -21,7 +21,7 @@ function Header({ loggedIn }) {
           />
           <button
             className={`header__menu ${
-              openNavigation && "header__menu_opened"
+              openNavigation && 'header__menu_opened'
             }`}
             onClick={handleClickOnNavSwitch}
           />

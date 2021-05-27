@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+
 function Portfolio() {
   return (
     <section className="portfolio main__section ">

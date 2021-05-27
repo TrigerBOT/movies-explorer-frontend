@@ -1,9 +1,9 @@
-import React from "react";
-import Avatar from "../../images/avatar.jpg";
+import React from 'react';
+import Avatar from '../../images/avatar.jpg';
 
 function AboutMe() {
   return (
-    <section  id="student" className="about-me main__section">
+    <section id="student" className="about-me main__section">
       <h2 className="about-me__title main__section-title ">Студент</h2>
       <p className="about-me__name">Кирилл</p>
       <p className="about-me__profession">Фронтенд-разработчик, 20 лет</p>

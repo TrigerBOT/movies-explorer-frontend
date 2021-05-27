@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Error({ status = 404, message = "Страница не найдена" }) {
+function Error({ status = 404, message = 'Страница не найдена' }) {
   return (
     <div className="error">
       <div className="error__container">

@@ -1,60 +1,53 @@
-import React , {useState} from "react";
-import { Link } from "react-router-dom";
-import Form from "../Form/Form";
-function Login({onSignin,message}) {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-  function handleSubmit(evt){
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Form from '../Form/Form';
+import useFormWithValidation from '../../hooks/useFormWithValidation/useFormWithValidation';
+
+function Login({ onSignin, message }) {
+  const formWithValidation = useFormWithValidation();
+  const { email, password } = formWithValidation.values;
+  const data = {
+    email,
+    password,
+  };
+  function handleSubmit(evt) {
     evt.preventDefault();
     onSignin(data);
   }
-  const [isValid,setIsValid] = useState(false);
-  function handleChange(evt)  {
-   
-    const target = evt.target;
-    const name = target.name;
-    const value = target.value;
-    setData({ ...data, [name]: value });
-    setIsValid(target.closest("form").checkValidity());
- 
-  };
 
   const inputs = [
     {
-      for: "email",
-      name: "email",
-      label: "email",
-      change:handleChange
+      for: 'email',
+      name: 'email',
+      label: 'email',
+      type: 'email',
     },
     {
-      for: "password",
-      name: "password",
-      label: "Пароль",
-      change:handleChange
+      for: 'password',
+      name: 'password',
+      label: 'Пароль',
+      type: 'password',
     },
   ];
-  const title = "Рады Видеть!";
-  const button = "Войти";
-  const link = "Зарегистрироваться";
-  const footer = "Ещё не зарегистрированы?";
+  const title = 'Рады Видеть!';
+  const button = 'Войти';
+  const link = 'Зарегистрироваться';
+  const footer = 'Ещё не зарегистрированы?';
   return (
     <Form
       inputs={inputs}
-      isValid={isValid}
-      message={message}
       title={title}
       button={button}
       link={link}
       footer={footer}
+      formWithValidation={formWithValidation}
       onSubmit={handleSubmit}
-      Link={
+      Link={(
         <Link to="/signup" className="form__link">
-           Регистрация
+          Регистрация
         </Link>
-      }
-    ></Form>
+      )}
+    />
   );
 }
 

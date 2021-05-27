@@ -1,38 +1,37 @@
-import React from "react";
+import React from 'react';
+
 function NavTab() {
   const navInfo = [
     {
-      title: "О проекте",
-      link: "#about-project",
+      title: 'О проекте',
+      link: '#about-project',
       id: 1,
-      listItemClassName: "nav-tab__list-item",
-      listLinkClassName: "nav-tab__list-link",
+      listItemClassName: 'nav-tab__list-item',
+      listLinkClassName: 'nav-tab__list-link',
     },
     {
-      title: "Технологии",
-      link: "#technologies",
+      title: 'Технологии',
+      link: '#technologies',
       id: 2,
-      listItemClassName: "nav-tab__list-item",
-      listLinkClassName: "nav-tab__list-link",
+      listItemClassName: 'nav-tab__list-item',
+      listLinkClassName: 'nav-tab__list-link',
     },
     {
-      title: "Студент",
-      link: "#student",
+      title: 'Студент',
+      link: '#student',
       id: 3,
-      listItemClassName: "nav-tab__list-item",
-      listLinkClassName: "nav-tab__list-link",
+      listItemClassName: 'nav-tab__list-item',
+      listLinkClassName: 'nav-tab__list-link',
     },
   ];
 
-  const navTabs = navInfo.map((tab) => {
-    return (
-      <li className={tab.listItemClassName} key={tab.id}>
-        <a className={tab.listLinkClassName} href={tab.link}>
-          {tab.title}
-        </a>
-      </li>
-    );
-  });
+  const navTabs = navInfo.map((tab) => (
+    <li className={tab.listItemClassName} key={tab.id}>
+      <a className={tab.listLinkClassName} href={tab.link}>
+        {tab.title}
+      </a>
+    </li>
+  ));
 
   return (
     <nav className="nav-tab">

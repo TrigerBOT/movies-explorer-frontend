@@ -1,55 +1,41 @@
-import React , {useState} from "react";
-import { Link } from "react-router-dom";
-import Form from "../Form/Form";
-function Register({onSignup,message}) {
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-  const [isValid,setIsValid] = useState(false);
-  function handleSubmit(evt){
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Form from '../Form/Form';
+import useFormWithValidation from '../../hooks/useFormWithValidation/useFormWithValidation';
+
+function Register({ onSignup, message }) {
+  const formWithValidation = useFormWithValidation();
+  const { name, email, password } = formWithValidation.values;
+
+  function handleSubmit(evt) {
     evt.preventDefault();
-    onSignup(data);
+    onSignup(name, email, password);
   }
-  function handleChange(evt)  {
-   
-    const target = evt.target;
-    const name = target.name;
-    const value = target.value;
-    setData({ ...data, [name]: value });
-    setIsValid(target.closest("form").checkValidity());
- 
-  };
-
-
-
-
 
   const inputs = [
     {
-      for: "name",
-      name: "name",
-      label: "Имя",
-      change:handleChange
+      for: 'name',
+      name: 'name',
+      label: 'Имя',
+      type: 'text',
     },
     {
-      for: "Email",
-      name: "email",
-      label: "Email",
-      change:handleChange
+      for: 'email',
+      name: 'email',
+      type: 'email',
+      label: 'Email',
     },
     {
-      for: "password",
-      name: "password",
-      label: "Пароль",
-      change:handleChange
+      for: 'password',
+      type: 'password',
+      name: 'password',
+      label: 'Пароль',
     },
   ];
-  const title = "Добро пожаловать!";
-  const button = "Зарегистрироваться";
-  const link = "Войти";
-  const footer = "Уже зарегистрированы?";
+  const title = 'Добро пожаловать!';
+  const button = 'Зарегистрироваться';
+  const link = 'Войти';
+  const footer = 'Уже зарегистрированы?';
   return (
     <Form
       onSubmit={handleSubmit}
@@ -58,14 +44,14 @@ function Register({onSignup,message}) {
       button={button}
       link={link}
       message={message}
+      formWithValidation={formWithValidation}
       footer={footer}
-      isValid={isValid}
-      Link={
+      Link={(
         <Link to="/signin" className="form__link">
-        Войти
-     </Link>
-      }
-    ></Form>
+          Войти
+        </Link>
+      )}
+    />
   );
 }
 
