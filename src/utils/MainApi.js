@@ -98,7 +98,7 @@ class MainApi {
 }
 
 const OPTIONS = {
-  baseUrl: 'http://api.moviefinder.nomoredomains.club',
+  baseUrl: 'https://api.moviefinder.nomoredomains.club',
   headers: {
     'Content-Type': 'application/json',
   },
