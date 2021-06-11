@@ -35,33 +35,37 @@ function Profile({
 
     if (!validEmail) {
       setEmailError('Неверный формат почты');
-    } else {
-      setEmailError('');
-    }
-    setEmail(e.target.value);
-  }
-  useEffect(() => {
-    if (currentUser.name === name && currentUser.email === email) {
       setFormValid(false);
     } else {
+      setEmailError('');
       setFormValid(true);
     }
-  }, [name, email, currentUser.name, currentUser.email]);
+    setEmail(e.target.value);
+    console.log(formValid);
+  }
+  
   function handleNameChange(e) {
     const validName = /^[a-zA-Z- ]+$/.test(e.target.value);
 
     if (e.target.value.length < 2) {
       setNameError('Длина имени должна быть не менее 2 символов');
+      setFormValid(false);
     } else if (e.target.value.length > 30) {
       setNameError('Длина имени должна должна быть не более 30 символов');
+      setFormValid(false);
     } else if (!validName) {
       setNameError('Имя должно быть указано латиницей');
+      setFormValid(false);
     } else {
       setNameError('');
+      setFormValid(true);
     }
     setName(e.target.value);
+    console.log(formValid);
   }
   function handleSubmit(e) {
+    e.preventDefault();
+    console.log(formValid);
     if (formValid) {
       e.preventDefault();
       onUpdateCurrentUser({

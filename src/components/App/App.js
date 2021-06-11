@@ -26,14 +26,12 @@ function App() {
   const history = useHistory();
   const location = useLocation();
   useEffect(() => {
-    getAllMovies();
-  }, [currentUser]);
-  useEffect(() => {
     if (loggedIn) {
       setIsLoading(true);
+      getAllMovies();
       mainApi.getSavedMovies(localStorage.getItem('jwt'))
         .then((data) => {
-          setUserMovies(data);
+          localStorage.setItem('userMovies', JSON.stringify(data));
         })
         .catch(console.log)
         .finally(() => {
@@ -63,6 +61,26 @@ function App() {
         });
     }
   }, []);
+
+
+  useEffect(() => {
+    
+    const films = localStorage.getItem('filteredMovies');
+    const saved = localStorage.getItem('saved');
+    if (films) {
+      if (saved==='true') {
+        setUserMovies(JSON.parse(localStorage.getItem('filteredMovies')))
+      }
+      else {
+        console.log('2');
+        setMovies(JSON.parse(localStorage.getItem('filteredMovies')));
+        setUserMovies(JSON.parse(localStorage.getItem('userMovies')));
+      }
+    }
+    else {
+      return
+    }
+  }, [])
 
   function getCurrentUser() {
     const jwt = localStorage.getItem('jwt');
@@ -194,7 +212,6 @@ function App() {
           thumbnail: image,
         }));
         localStorage.setItem('allMovies', JSON.stringify(allMovies));
-        setMovies(allMovies);
       })
       .catch(console.log)
       .finally(() => {
@@ -202,9 +219,9 @@ function App() {
       });
   };
 
-  const onChangeFilters = ({ key, value }) => {
+  const onChangeFilters = (movies, { key, value }) => {
     setFilters((prev) => {
-      handleFilterAllMovies({ ...prev, [key]: value });
+      handleFilterAllMovies(movies, { ...prev, [key]: value });
       return { ...prev, [key]: value };
     });
   };
@@ -213,6 +230,7 @@ function App() {
     mainApi.saveMovie(data, localStorage.getItem('jwt'))
       .then((res) => {
         setUserMovies((prev) => ([...prev, res.data]));
+        localStorage.setItem('userMovies', JSON.stringify(userMovies));
       })
       .catch((err) => {
         console.log(err);
@@ -243,21 +261,31 @@ function App() {
     }
     for (const key in item) {
       if (item.hasOwnProperty(key) && typeof item[key] === 'string'
-          && item[key].toLowerCase().includes(text.toLowerCase())) {
+        && item[key].toLowerCase().includes(text.toLowerCase())) {
         return true;
       }
     }
     return false;
   });
 
-  const handleFilterAllMovies = (filters) => {
-    if (localStorage.getItem('allMovies')) {
+  const handleFilterAllMovies = (movies, filters) => {
+    if (localStorage.getItem(`${movies}`)) {
       setIsLoading(true);
-      const filteredMovies = getFilteredMovies(JSON.parse(localStorage.getItem('allMovies')), filters) || [];
-      setMovies(filteredMovies);
+      const filteredMovies = getFilteredMovies(JSON.parse(localStorage.getItem(`${movies}`)), filters) || [];
+      if (movies === 'allMovies') {
+        setMovies(filteredMovies)
+        console.log(movies);
+        localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
+        localStorage.setItem('saved', false);
+      }
+      else {
+        setUserMovies(filteredMovies);
+        localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
+        localStorage.setItem('saved', true);
+      }
       setIsLoading(false);
     } else {
-      getAllMovies('');
+      return
     }
   };
 
@@ -315,7 +343,7 @@ function App() {
             <Register onSignup={handleRegister} message={message} />
           </Route>
           <Route path="/signin">
-            <Login onSignin={handleLogin} loggedIn={loggedIn} />
+            <Login onSignin={handleLogin} message={message} loggedIn={loggedIn} />
           </Route>
           <Route path="*">
             <NotFound />

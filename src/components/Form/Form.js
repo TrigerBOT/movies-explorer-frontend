@@ -30,7 +30,7 @@ function Form(props) {
         <span className={errorClassName}>{props.message}</span>
       </div>
       <div className="form__button-container">
-        <button type="submit" className="form__button">{props.button}</button>
+        <button   type="submit" className="form__button" >{props.button}</button>
         <div className="form__footer">
           {props.footer}
           {' '}
