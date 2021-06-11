@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import React, {  Suspense } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard.js';
 import Preloader from '../Preloader/Preloader';
 
